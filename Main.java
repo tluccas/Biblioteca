@@ -11,8 +11,22 @@ public class Main {
 
         while (true) {
             System.out.println("\nBEM VINDO! \n=== ESCOLHA UMA OPÇÃO ABAIXO ===");
-            System.out.println("1. Adicionar Livro\n2. Remover Livro\n3. Listar Livros\n4. Registrar usuário\n5. Gerenciar Empréstimo");
-            int opcao = s.nextInt();
+            System.out.println("1. Adicionar Livro\n2. Remover Livro\n3. Listar Livros\n4. Registrar usuário\n5. Gerenciar Empréstimo\n6. Sair");
+            int opcao = 0;
+            while(true){ // Tratamento de erro
+                String entrada = s.nextLine();
+                try{
+                    opcao = Integer.parseInt(entrada);
+                    if (opcao <= 0) {
+                        System.out.println("ERRO! Insira um número válido!");
+                    }
+                    else{
+                        break;
+                    }
+                }catch (Exception e){
+                    System.out.println("ERRO! Insira apenas números!");
+                }
+            }
             if (opcao == 1) {
                 String titulo;
                 String autor;
@@ -20,7 +34,6 @@ public class Main {
                 while(true) {
                     try{
                         System.out.println("Titulo do livro: ");
-                        s.nextLine(); //Limpa o buffer para evitar bug
                         titulo = s.nextLine();
                         break;
                     }catch(Exception e){
@@ -35,11 +48,20 @@ public class Main {
                         System.out.println("ERRO! Insira apenas letras");}
                 }
                 while(true) {
+                    ano_pub = 0;
+                    System.out.println("Ano de Publicação: ");
+                    String num = s.nextLine();
+
                     try {
-                        System.out.println("Ano de Publicação: ");
-                        ano_pub = s.nextInt();
-                        s.nextLine(); // Correção de um bug, limpa o buffer
+                        ano_pub = Integer.parseInt(num); //Tenta converter para int
+
+                        if(ano_pub > 0){
                         break;
+                        }
+                        else{
+                            System.out.println("ERRO! Entrada inválida!");
+                        }
+
                 }catch(Exception e){
                     System.out.println("ERRO! Insira apenas numeros");}
                 }
@@ -73,6 +95,46 @@ public class Main {
                 if(!removido){
                     System.out.println("O livro não está no catálogo!");
                 }
+            }
+            else if (opcao == 3) {
+                int num;
+                while(true) {
+                    System.out.println("\n1. Exibição Detalhada\n2. Exibição Resumida ");
+                    String exibir = s.nextLine();
+                    try {
+                        num = Integer.parseInt(exibir); //Se o usuario inserir uma string mas forem apenas numeros converte para int
+                        if (num == 1 || num == 2){
+                        break;
+                        }
+                        else{
+                            System.out.println("Entrada inválida!");
+                        }
+                    } catch (NumberFormatException e) {
+                        // Entra em uma exceção se a conversão der erro
+                        System.out.println("Entrada inválida! Insira um número inteiro.");
+                    }
+                }
+                if (num == 1){
+                    System.out.println("LIVROS NO CATALOGO:");
+                    for (int i = 0; i < catalogo.size(); i++) {
+                        System.out.printf("\nLivro N.%d:\n", i+1);
+                        System.out.println(catalogo.get(i));
+                    }
+                }
+                else if (num == 2){
+                    System.out.println("LIVROS NO CATALOGO:");
+                    for (int i = 0; i < catalogo.size(); i++){
+                        System.out.printf("\nLivro N.%d:\n", i+1);
+                        System.out.println(catalogo.get(i).getTitulo());
+                    }
+                }
+            }
+            else if (opcao == 4) {
+
+            }
+            else if (opcao == 6) {
+                System.out.println("SAINDO DO PROGRAMA...");
+                break;
             }
         }
     }
