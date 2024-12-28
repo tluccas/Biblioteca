@@ -8,7 +8,7 @@ public class User {
     private String email;
     private List<Emprestimo> historico;
     // Construtor
-    public User(String nome, String email, Livro[] historico) {
+    public User(String nome, String email) {
         this.nome = nome;
         this.email = email;
         this.historico = new ArrayList<>();

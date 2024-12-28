@@ -11,7 +11,7 @@ public class Main {
 
         while (true) {
             System.out.println("\nBEM VINDO! \n=== ESCOLHA UMA OPÇÃO ABAIXO ===");
-            System.out.println("1. Adicionar Livro\n2. Remover Livro\n3. Listar Livros\n4. Registrar usuário\n5. Gerenciar Empréstimo\n6. Sair");
+            System.out.println("1. Adicionar Livro\n2. Remover Livro\n3. Listar Livros\n4. Registrar usuário\n5. Criar Empréstimo\n6. Sair");
             int opcao = 0;
             while(true){ // Tratamento de erro
                 String entrada = s.nextLine();
@@ -130,7 +130,40 @@ public class Main {
                 }
             }
             else if (opcao == 4) {
+                String email = "";
+                System.out.println("\nRESGISTRANDO USUÁRIO: ");
+                System.out.println("Digite o nome do usuário: ");
+                String nome = s.nextLine();
+                while(true) {
+                    System.out.println("Digite o email do usuario: ");
+                    email = s.nextLine();
+                    boolean disponivel = true;
+                    for (int i = 0; i < users.size(); i++) {
+                        if (users.get(i).getEmail().equalsIgnoreCase(email)) {
+                            System.out.println("\nERRO: E-mail já utilizado!\n");
+                            disponivel = false;
+                            break;
+                        }
+                    }
+                    if (disponivel == true){
+                        break;
+                    }
+                }
+                User user = new User(nome, email);
+                users.add(user);
+                System.out.printf("\nUsuário %s criado com sucesso!", user.getNome());
 
+            }
+            else if (opcao == 5) {
+                System.out.println("\nNome do usuario: ");
+                while(true) {
+                    String busca = s.nextLine();
+                    for (int i = 0; i < users.size(); i++) {
+                        if (users.get(i).getNome().equalsIgnoreCase(busca)) {
+                            users.get(i).solicitarEmprestimo();
+                        }
+                    }
+                }
             }
             else if (opcao == 6) {
                 System.out.println("SAINDO DO PROGRAMA...");
