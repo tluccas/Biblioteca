@@ -1,62 +1,14 @@
-Sistema de Gerenciamento de Biblioteca
-Descrição:
-Um sistema para gerenciar livros, usuários e empréstimos em uma biblioteca. O sistema pode permitir que os administradores adicionem livros ao acervo, cadastrem usuários e gerenciem empréstimos, enquanto os usuários podem consultar o catálogo e verificar status de empréstimos.
+# Sistema de Biblioteca
 
-Classes Principais:
+Este é um sistema de gerenciamento de biblioteca desenvolvido em Java. O sistema permite a criação de usuários, gerenciamento de um catálogo de livros e o empréstimo de livros. Ele está sendo projetado para facilitar o controle de livros disponíveis, empréstimos realizados e o registro de novos usuários.
 
-Livro
+## Funcionalidades
 
-Atributos:
-titulo (string)
-autor (string)
-ano_publicacao (int)
-disponivel (bool)
-Métodos:
-emprestar()
-devolver()
-exibir_informacoes()
+- **Criação de Usuários**: Cadastro de novos usuários no sistema com informações como nome, e-mail e endereço.
+- **Gerenciamento de Catálogo de Livros**: Adição, edição e remoção de livros no catálogo da biblioteca, incluindo detalhes como título, autor, gênero e quantidade disponível.
+- **Empréstimo de Livros**: Permite que os usuários realizem empréstimos de livros disponíveis no catálogo, com controle de prazos e devoluções.
+- **Controle de Empréstimos**: Monitora o status dos empréstimos, indicando se o livro está emprestado ou disponível.
 
-Usuario
+## Tecnologias Usadas
 
-Atributos:
-nome (string)
-email (string)
-historico_emprestimos (lista de objetos Emprestimo)
-Métodos:
-visualizar_historico()
-solicitar_emprestimo()
-
-Emprestimo
-
-Atributos:
-livro (objeto Livro)
-usuario (objeto Usuario)
-data_emprestimo (data)
-data_devolucao (data)
-Métodos:
-calcular_prazo()
-exibir_detalhes()
-
-Biblioteca
-
-Atributos:
-catalogo (lista de objetos Livro)
-usuarios (lista de objetos Usuario)
-Métodos:
-adicionar_livro()
-remover_livro()
-listar_livros()
-registrar_usuario()
-gerenciar_emprestimo()
-Funcionalidades do Sistema:
-
-Para o administrador:
-
-Cadastro e exclusão de livros e usuários.
-Controle de empréstimos e devoluções.
-Listagem de livros disponíveis e usuários registrados.
-Para o usuário:
-
-Consulta de livros disponíveis.
-Solicitação de empréstimos.
-Visualização de histórico de empréstimos.
+- **Linguagem**: Java
