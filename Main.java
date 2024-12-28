@@ -160,7 +160,7 @@ public class Main {
                     String busca = s.nextLine();
                     for (int i = 0; i < users.size(); i++) {
                         if (users.get(i).getNome().equalsIgnoreCase(busca)) {
-                            users.get(i).solicitarEmprestimo();
+                            users.get(i);
                         }
                     }
                 }
