@@ -155,15 +155,46 @@ public class Main {
 
             }
             else if (opcao == 5) {
+                String buscarLivro;
+                String buscarUser;
+                User user = null;
+                Livro livro = null;
                 System.out.println("\nNome do usuario: ");
-                while(true) {
-                    String busca = s.nextLine();
+                while(user == null) {
+                    buscarUser = s.nextLine();
+                    boolean encontrado = false;
+
                     for (int i = 0; i < users.size(); i++) {
-                        if (users.get(i).getNome().equalsIgnoreCase(busca)) {
-                            users.get(i);
+                        if (users.get(i).getNome().equalsIgnoreCase(buscarUser)) {
+                            user = users.get(i);
+                            encontrado = true;
+                            break;
                         }
                     }
+                    if (!encontrado) {
+                        System.out.println("Usuário não encontrado! Tente novamente: ");
+                    }
                 }
+
+                while(livro == null) {
+                    System.out.println("Nome do livro: ");
+                    buscarLivro = s.nextLine();
+                    boolean encontrado = false;
+
+                    for (int i = 0; i < catalogo.size(); i++){
+                        if (catalogo.get(i).getTitulo().equalsIgnoreCase(buscarLivro)) {
+                            livro = catalogo.get(i);
+                            encontrado = true;
+                            break;
+                        }
+                    }
+                    if (!encontrado) {
+                        System.out.println("Livro não encontrao! Tente novamente: ");
+                    }
+                }
+
+                user.solicitarEmprestimo(livro);
+                System.out.printf("Emprestimo do livro %s" + "para o usuário %s concluido com sucesso!\n ", livro.getTitulo(), user.getNome());
             }
             else if (opcao == 6) {
                 System.out.println("SAINDO DO PROGRAMA...");
@@ -172,3 +203,4 @@ public class Main {
         }
     }
 }
+
