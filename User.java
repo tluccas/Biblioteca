@@ -39,7 +39,7 @@ public class User {
                 Emprestimo novo = new Emprestimo(livro, this, LocalDate.now(), LocalDate.now().plusDays(7) );
 
                 this.historico.add(novo); //Adiciona o emprestimo ao historico do user
-                System.out.printf("\nEmprestimo do livro %s concluído com sucesso!", livro.getTitulo());
+                System.out.printf("Emprestimo do livro %s para o usuário %s concluido com sucesso!\n ", livro.getTitulo(), getNome());
 
             }catch(IllegalStateException e){
                 System.out.println(e.getMessage());

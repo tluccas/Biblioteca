@@ -189,12 +189,11 @@ public class Main {
                         }
                     }
                     if (!encontrado) {
-                        System.out.println("Livro não encontrao! Tente novamente: ");
+                        System.out.println("Livro não encontrado! Tente novamente: ");
                     }
                 }
 
                 user.solicitarEmprestimo(livro);
-                System.out.printf("Emprestimo do livro %s" + "para o usuário %s concluido com sucesso!\n ", livro.getTitulo(), user.getNome());
             }
             else if (opcao == 6) {
                 System.out.println("SAINDO DO PROGRAMA...");
