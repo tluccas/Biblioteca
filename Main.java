@@ -149,7 +149,9 @@ public class Main {
                         break;
                     }
                 }
-                User user = new User(nome, email);
+                System.out.println("Senha: ");
+                String senha = s.nextLine();
+                User user = new User(nome, email, senha);
                 users.add(user);
                 System.out.printf("\nUsuário %s criado com sucesso!", user.getNome());
 

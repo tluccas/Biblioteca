@@ -110,16 +110,19 @@ public class InterfaceGraficaTest {
         registrarUsuarioButton.addActionListener(e -> {
             JTextField nomeField = new JTextField();
             JTextField emailField = new JTextField();
+            JTextField senhaField = new JTextField();
 
             Object[] message = {
                     "Nome:", nomeField,
-                    "Email:", emailField
+                    "Email:", emailField,
+                    "Senha:", senhaField
             };
 
             int option = JOptionPane.showConfirmDialog(null, message, "Registrar Usuário", JOptionPane.OK_CANCEL_OPTION);
             if (option == JOptionPane.OK_OPTION) {
                 String nome = nomeField.getText();
                 String email = emailField.getText();
+                String senha = senhaField.getText();
 
                 boolean emailDisponivel = true;
                 for (User user : users) {
@@ -130,7 +133,7 @@ public class InterfaceGraficaTest {
                 }
 
                 if (emailDisponivel) {
-                    User user = new User(nome, email);
+                    User user = new User(nome, email, senha);
                     users.add(user);
                     JOptionPane.showMessageDialog(null, "Usuário registrado com sucesso!");
                 } else {

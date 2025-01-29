@@ -6,11 +6,13 @@ public class User {
 
     private String nome;
     private String email;
+    private String senha;
     private List<Emprestimo> historico;
     // Construtor
-    public User(String nome, String email) {
+    public User(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
+        this.senha = senha;
         this.historico = new ArrayList<>();
     }
     //GETTERS E SETTERS
@@ -26,6 +28,10 @@ public class User {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     //Metodos
