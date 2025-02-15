@@ -256,10 +256,10 @@ public class Main {
         }
     }
 
-    // Método para criar um empréstimo
+    // Método para gerar um empréstimo
     private static void criarEmprestimo(Scanner s, List<Livro> catalogo, List<User> users) {
-        System.out.println("\nSeu nome: ");
-        User user = buscarUsuario(s, users);
+        System.out.println("\nSeu Email: ");
+        User user = buscarUsuario(s, users); // Busca o nome do usuario na lista users
 
         System.out.println("Nome do livro: ");
         Livro livro = buscarLivro(s, catalogo);
@@ -273,7 +273,7 @@ public class Main {
         while (user == null) {
             String buscarUser = s.nextLine();
             for (User u : users) {
-                if (u.getNome().equalsIgnoreCase(buscarUser)) {
+                if (u.getEmail().equalsIgnoreCase(buscarUser)) {
                     user = u;
                     break;
                 }
