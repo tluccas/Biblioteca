@@ -2,36 +2,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User extends Pessoa {
 
-    private String nome;
-    private String email;
-    private String senha;
     private List<Emprestimo> historico;
     // Construtor
     public User(String nome, String email, String senha) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
+        super(nome, email, senha);
         this.historico = new ArrayList<>();
-    }
-    //GETTERS E SETTERS
-    public String getNome() {
-        return nome;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     //Metodos
@@ -54,6 +31,6 @@ public class User {
     }
 
     public String toString() {
-        return "Nome: " + nome + "\nEmail: " + email + "\nHistorico: " + historico;
+        return "Nome: " + super.getNome() + "\nEmail: " + super.getEmail() + "\nHistorico: " + historico;
     }
 }
