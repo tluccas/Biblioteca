@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        List<Livro> catalogo = new ArrayList<>(); // Catalogo da biblioteca
-        List<User> users = new ArrayList<>(); //Lista de users
+        List<Livro> catalogo = PersistenciaDados.carregarCatalogo(); // Catalogo da biblioteca
+        List<User> users = PersistenciaDados.carregarUsuarios(); //Lista de users
         Scanner s = new Scanner(System.in);
         Admin admin = new Admin("admin", "admin", "admin"); //Instanciando a classe ADMIN internamente
 
@@ -16,6 +16,10 @@ public class Main {
             String controle = s.nextLine();
             if (controle.equalsIgnoreCase("S")) {
                 System.out.print("Obrigado por usar nosso sistema!");
+
+                PersistenciaDados.salvarLivros(catalogo);
+                PersistenciaDados.salvarUsuarios(users);
+
                 break;
             } else if (!controle.equalsIgnoreCase("c")) {
                 System.out.print("\nINSIRA UMA ENTRADA VÁLIDA!\n");
@@ -259,7 +263,7 @@ public class Main {
     // Método para gerar um empréstimo
     private static void criarEmprestimo(Scanner s, List<Livro> catalogo, List<User> users) {
         System.out.println("\nSeu Email: ");
-        User user = buscarUsuario(s, users); // Busca o nome do usuario na lista users
+        User user = buscarUsuario(s, users); // Busca o e-mail do usuario na lista users
 
         System.out.println("Nome do livro: ");
         Livro livro = buscarLivro(s, catalogo);
